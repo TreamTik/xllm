@@ -683,6 +683,9 @@ void ensure_xllm_ops_registered() {
 // compiled only under USE_NPU (mutually exclusive with USE_CUDA).
 TORCH_LIBRARY(xllm_ops, m) {
   m.def(
+      "dual_affine_layer_norm(Tensor x, Tensor gamma1, Tensor beta1, Tensor "
+      "gamma2, Tensor beta2, float epsilon=1e-5) -> (Tensor, Tensor)");
+  m.def(
       "dspark_allocate_verify_prefixes(Tensor confidence, "
       "Tensor(a!) widths, int budget) -> ()");
   m.def(
@@ -1004,6 +1007,8 @@ TORCH_LIBRARY(xllm_ops, m) {
 }
 
 TORCH_LIBRARY_IMPL(xllm_ops, PrivateUse1, m) {
+  m.impl("dual_affine_layer_norm",
+         TORCH_FN(xllm::kernel::npu::dual_affine_layer_norm));
   m.impl(
       "dspark_allocate_verify_prefixes",
       TORCH_FN(xllm::kernel::npu::tilelang::dspark_allocate_verify_prefixes));
