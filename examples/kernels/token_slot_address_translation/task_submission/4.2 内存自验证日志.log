@@ -1,0 +1,54 @@
+{
+  "environment": {
+    "source_head": "645c9a7981d91148667a73d052b9af9f187d532a",
+    "source_dirty": "",
+    "kernel_sha256": "1d0c23c4237db054a95f69ac15217b7f6ceb94abc2487071579c9f5c3de7ed14",
+    "measurement_source_commit": "41f772dfff808f7a58971ef815652e8ee79ffc3f",
+    "measurement_note": "v3 measured the same kernel and timed functions; later changes add explicit archive provenance and generalization serialization only",
+    "hostname": "eaddb6692ee6",
+    "python": "3.12.13",
+    "device": "Ascend910B3",
+    "versions": {
+      "torch": "2.7.1+cpu",
+      "torch-npu": "2.7.1.post8",
+      "triton-ascend": "3.6.0.post2",
+      "numpy": "2.5.4"
+    },
+    "hardware_scope": "Ascend910B3 development; Atlas A3 acceptance pending",
+    "cann": "9.1.0"
+  },
+  "engineering_by_case": {
+    "slot_perf_small": {
+      "active_before_bytes": 135168,
+      "active_after_bytes": 135168,
+      "peak_increment_bytes": 16896,
+      "output_bytes": 16384,
+      "repeat20_released": "PASS",
+      "two_streams": "PASS",
+      "retained_outputs_independent": "PASS",
+      "baseline_active_before_bytes": 135168,
+      "baseline_active_after_bytes": 135168,
+      "baseline_peak_increment_bytes": 102400,
+      "baseline_output_bytes": 16384,
+      "baseline_repeat20_released": "PASS",
+      "candidate_minus_baseline_peak_bytes": -85504,
+      "peak_definition": "Warmed PyTorch active allocation increment for one complete prepared call; includes output and per-call temporaries; not total HBM/runtime scratch"
+    },
+    "slot_perf_large": {
+      "active_before_bytes": 788480,
+      "active_after_bytes": 788480,
+      "peak_increment_bytes": 8389120,
+      "output_bytes": 8388608,
+      "repeat20_released": "PASS",
+      "two_streams": "PASS",
+      "retained_outputs_independent": "PASS",
+      "baseline_active_before_bytes": 788480,
+      "baseline_active_after_bytes": 788480,
+      "baseline_peak_increment_bytes": 44044288,
+      "baseline_output_bytes": 8388608,
+      "baseline_repeat20_released": "PASS",
+      "candidate_minus_baseline_peak_bytes": -35655168,
+      "peak_definition": "Warmed PyTorch active allocation increment for one complete prepared call; includes output and per-call temporaries; not total HBM/runtime scratch"
+    }
+  }
+}
