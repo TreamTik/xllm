@@ -359,10 +359,18 @@ def benchmark() -> dict:
     return {"benchmarks": records[:2], "diagnostics": records[2:]}
 
 
-def _environment() -> dict:
+def _environment(source_manifest: Path | None) -> dict:
     root = Path(__file__).resolve().parents[3]
     path = root / "xllm/python/kernels_npu/triton/token_slot_address_translation.py"
+    if source_manifest is None:
+        version = {
+            "source_head": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip(),
+            "source_dirty": subprocess.check_output(["git", "status", "--short"], cwd=root, text=True),
+        }
+    else:
+        version = json.loads(source_manifest.read_text())
     return {
+        **version,
         "hostname": platform.node(),
         "python": platform.python_version(),
         "device": torch.npu.get_device_name(0),
@@ -370,8 +378,6 @@ def _environment() -> dict:
             name: importlib.metadata.version(name) for name in ("torch", "torch-npu", "triton-ascend", "numpy")
         },
         "kernel_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
-        "source_head": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip(),
-        "source_dirty": subprocess.check_output(["git", "status", "--short"], cwd=root, text=True),
         "hardware_scope": "Ascend910B3 development; Atlas A3 acceptance pending",
         "cann": "9.1.0",
     }
@@ -381,9 +387,12 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", choices=("functional", "benchmark", "all"), default="all")
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument(
+        "--source-manifest", type=Path, help="Explicit source provenance for an extracted standalone archive"
+    )
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    result: dict[str, Any] = {"status": "RUNNING", "environment": _environment()}
+    result: dict[str, Any] = {"status": "RUNNING", "environment": _environment(args.source_manifest)}
     try:
         if args.mode in ("all", "functional"):
             result.update(functional())
@@ -392,6 +401,13 @@ def main() -> None:
             (args.output_dir / "generalization.json").write_text(json.dumps(general, indent=2) + "\n")
         if args.mode in ("all", "benchmark"):
             result.update(benchmark())
+        if "diagnostics" in result:
+            ids = _SPEC["generalization"]["case_ids"]
+            general = {
+                "cases": [c for c in result.get("cases", []) if c["id"] in ids],
+                "diagnostics": result["diagnostics"],
+            }
+            (args.output_dir / "generalization.json").write_text(json.dumps(general, indent=2) + "\n")
         result["status"] = "PASS" if all(x["status"] == "PASS" for x in result.get("benchmarks", [])) else "FAIL"
     except Exception:
         result["status"] = "ERROR"

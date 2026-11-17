@@ -75,3 +75,8 @@ paired timings without main-case gates.
 
 Target acceptance is Atlas A3 with CANN 9.1.0. Ascend910B3 results are development evidence;
 A3 acceptance is pending. The task-required materials are placed in task_submission/ and task_submission.zip.
+
+The standalone archive preserves the same repository-relative kernel/example paths and includes
+`source-manifest.json`. In that archive, append `--source-manifest source-manifest.json`
+to the verification command to use its explicit source provenance instead of Git metadata.
+The design is reviewed in [cann-ops-competitions PR 3104](https://gitcode.com/cann/cann-ops-competitions/merge_requests/3104).
