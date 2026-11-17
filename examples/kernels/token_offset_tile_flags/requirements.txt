@@ -1,0 +1,5 @@
+torch==2.7.1
+torch-npu==2.7.1.post8
+triton-ascend==3.6.0.post2
+numpy==2.5.4
+pytest==8.4.2
