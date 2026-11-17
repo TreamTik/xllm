@@ -1,0 +1,97 @@
+{
+  "source": "functional-release.json",
+  "source_commit": "8892e265515fef218aa7b2b663297064625a6031",
+  "scope": "Ascend910B3 development verified; Atlas A3 acceptance pending",
+  "engineering_by_case": {
+    "packed_perf_small": {
+      "two_streams": "PASS",
+      "retained_outputs_independent": "PASS",
+      "repeat20_released": "PASS",
+      "active_before_bytes": 38912,
+      "active_after_bytes": 38912,
+      "peak_increment_bytes": 9216,
+      "output_bytes": 9184,
+      "baseline_peak_increment_bytes": 23552,
+      "baseline_output_bytes": 9184,
+      "baseline_active_before_bytes": 38912,
+      "baseline_active_after_bytes": 38912,
+      "candidate_minus_baseline_peak_bytes": -14336,
+      "peak_definition": "Warmed PyTorch active allocation for one complete prepared call on identical inputs; excludes persistent prepared input/layout buffers in both; not total HBM or all runtime scratch"
+    },
+    "packed_perf_large": {
+      "two_streams": "PASS",
+      "retained_outputs_independent": "PASS",
+      "repeat20_released": "PASS",
+      "active_before_bytes": 654848,
+      "active_after_bytes": 654848,
+      "peak_increment_bytes": 1042944,
+      "output_bytes": 1010944,
+      "baseline_peak_increment_bytes": 2126336,
+      "baseline_output_bytes": 1010944,
+      "baseline_active_before_bytes": 654848,
+      "baseline_active_after_bytes": 654848,
+      "candidate_minus_baseline_peak_bytes": -1083392,
+      "peak_definition": "Warmed PyTorch active allocation for one complete prepared call on identical inputs; excludes persistent prepared input/layout buffers in both; not total HBM or all runtime scratch"
+    }
+  },
+  "storage_rebindings": {
+    "packed_perf_small": [
+      {
+        "id": "mapping_set_storage",
+        "status": "PASS",
+        "candidate_mismatches": 0,
+        "storage_offset": 1,
+        "pointer_changed": true,
+        "old_alignment_mod16": 0,
+        "new_alignment_mod16": 4
+      },
+      {
+        "id": "logical_set_storage",
+        "status": "PASS",
+        "candidate_mismatches": 0,
+        "storage_offset": 1,
+        "pointer_changed": true,
+        "old_alignment_mod16": 0,
+        "new_alignment_mod16": 4
+      },
+      {
+        "id": "cu_set_storage_same_total",
+        "status": "PASS",
+        "candidate_mismatches": 0,
+        "storage_offset": 1,
+        "pointer_changed": true,
+        "old_alignment_mod16": 0,
+        "new_alignment_mod16": 4
+      }
+    ],
+    "packed_perf_large": [
+      {
+        "id": "mapping_set_storage",
+        "status": "PASS",
+        "candidate_mismatches": 0,
+        "storage_offset": 1,
+        "pointer_changed": true,
+        "old_alignment_mod16": 0,
+        "new_alignment_mod16": 4
+      },
+      {
+        "id": "logical_set_storage",
+        "status": "PASS",
+        "candidate_mismatches": 0,
+        "storage_offset": 1,
+        "pointer_changed": true,
+        "old_alignment_mod16": 0,
+        "new_alignment_mod16": 4
+      },
+      {
+        "id": "cu_set_storage_same_total",
+        "status": "PASS",
+        "candidate_mismatches": 0,
+        "storage_offset": 1,
+        "pointer_changed": true,
+        "old_alignment_mod16": 0,
+        "new_alignment_mod16": 4
+      }
+    ]
+  }
+}

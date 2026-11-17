@@ -71,6 +71,14 @@ python <task-package>/golden.py --verify-functional \
 The adjacent solution.py is the standalone task entry. The repository tests additionally exercise
 all three dispatch paths, mutable counts, INT32_MAX, storage rebinding and independent streams.
 Performance uses complete prepared.run calls, fresh output allocation and final synchronization.
-Keep logs, raw paired measurements and self-validation reports outside the source tree.
+Keep newly generated logs and raw measurements in a separate results directory.
 
 Target acceptance is Atlas A3 with CANN 9.1.0. Current 910B development measurements do not replace A3 acceptance.
+
+## Self-validation materials
+
+The task-required seven reports are in [task_submission/](task_submission/).
+Download the same files as [task_submission.zip](task_submission.zip).
+The reports cover source commit [8892e265515fef218aa7b2b663297064625a6031](https://github.com/TreamTik/xllm/commit/8892e265515fef218aa7b2b663297064625a6031).
+They record 910B development validation with CANN 9.1.0. Atlas A3 acceptance is pending.
+The directory and archive follow section 4 of the task specification.

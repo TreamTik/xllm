@@ -1,0 +1,350 @@
+/workspace/operators/packed_page_indices/work-20261117-implementation/env/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+/workspace/operators/packed_page_indices/work-20261117-implementation/env/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+/workspace/operators/packed_page_indices/work-20261117-implementation/env/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+  @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+[W1117 04:43:38.004557510 NPUCachingAllocator.cpp:198] Warning: The current CANN and Soc Version require processing for 32 padding size, with memory allocation. (function operator())
+{"id": "packed_perf_small", "route": "fused", "pairs": [{"round": 1, "order": ["baseline_us", "candidate_us"], "baseline_us": 220.40965, "candidate_us": 39.8463}, {"round": 2, "order": ["candidate_us", "baseline_us"], "candidate_us": 50.0536, "baseline_us": 193.22865}, {"round": 3, "order": ["baseline_us", "candidate_us"], "baseline_us": 191.80885, "candidate_us": 36.61695}, {"round": 4, "order": ["candidate_us", "baseline_us"], "candidate_us": 35.97955, "baseline_us": 187.5855}, {"round": 5, "order": ["baseline_us", "candidate_us"], "baseline_us": 192.09695, "candidate_us": 36.4244}, {"round": 6, "order": ["candidate_us", "baseline_us"], "candidate_us": 36.8712, "baseline_us": 182.7651}], "baseline_mean_us": 194.64911666666669, "candidate_mean_us": 39.29866666666666, "saved_mean_us": 155.35045000000002, "baseline_median_us": 191.9529, "candidate_median_us": 36.744075, "saved_mean_ci95_us": [147.48929166666667, 165.954925], "max_mean_us": 40, "checks": {"positive_mean": true, "positive_median": true, "ci_lower_positive": true, "mean_limit": true}, "status": "PASS"}
+{"id": "packed_perf_large", "route": "packed_triton_map", "pairs": [{"round": 1, "order": ["baseline_us", "candidate_us"], "baseline_us": 186.10705, "candidate_us": 66.85355}, {"round": 2, "order": ["candidate_us", "baseline_us"], "candidate_us": 68.0046, "baseline_us": 185.45305}, {"round": 3, "order": ["baseline_us", "candidate_us"], "baseline_us": 186.09935, "candidate_us": 68.68955}, {"round": 4, "order": ["candidate_us", "baseline_us"], "candidate_us": 66.134, "baseline_us": 189.3758}, {"round": 5, "order": ["baseline_us", "candidate_us"], "baseline_us": 185.58495, "candidate_us": 66.4879}, {"round": 6, "order": ["candidate_us", "baseline_us"], "candidate_us": 65.6998, "baseline_us": 189.9323}], "baseline_mean_us": 187.09208333333333, "candidate_mean_us": 66.97823333333332, "saved_mean_us": 120.11385000000001, "baseline_median_us": 186.1032, "candidate_median_us": 66.670725, "saved_mean_ci95_us": [118.03080833333333, 122.2426], "max_mean_us": 75, "checks": {"positive_mean": true, "positive_median": true, "ci_lower_positive": true, "mean_limit": true}, "status": "PASS"}
+{"id": "packed_route_32736", "route": "packed_triton_map", "pairs": [{"round": 1, "order": ["baseline_us", "candidate_us"], "baseline_us": 189.03735, "candidate_us": 67.7604}, {"round": 2, "order": ["candidate_us", "baseline_us"], "candidate_us": 67.9788, "baseline_us": 188.96475}, {"round": 3, "order": ["baseline_us", "candidate_us"], "baseline_us": 187.43545, "candidate_us": 66.1022}, {"round": 4, "order": ["candidate_us", "baseline_us"], "candidate_us": 66.56385, "baseline_us": 195.81665}, {"round": 5, "order": ["baseline_us", "candidate_us"], "baseline_us": 184.86935, "candidate_us": 67.3809}, {"round": 6, "order": ["candidate_us", "baseline_us"], "candidate_us": 67.6733, "baseline_us": 190.292}], "baseline_mean_us": 189.40259166666667, "candidate_mean_us": 67.24324166666666, "saved_mean_us": 122.15935, "baseline_median_us": 189.00105000000002, "candidate_median_us": 67.52709999999999, "saved_mean_ci95_us": [119.60632500000001, 125.27425833333332], "max_mean_us": null, "checks": {"positive_mean": true, "positive_median": true, "ci_lower_positive": true}, "status": "PASS"}
+{"id": "packed_route_32768", "route": "packed_triton_map", "pairs": [{"round": 1, "order": ["baseline_us", "candidate_us"], "baseline_us": 197.7239, "candidate_us": 68.11875}, {"round": 2, "order": ["candidate_us", "baseline_us"], "candidate_us": 66.6844, "baseline_us": 185.52975}, {"round": 3, "order": ["baseline_us", "candidate_us"], "baseline_us": 187.75735, "candidate_us": 67.6478}, {"round": 4, "order": ["candidate_us", "baseline_us"], "candidate_us": 67.50395, "baseline_us": 190.50135}, {"round": 5, "order": ["baseline_us", "candidate_us"], "baseline_us": 185.9056, "candidate_us": 67.3588}, {"round": 6, "order": ["candidate_us", "baseline_us"], "candidate_us": 67.6358, "baseline_us": 188.76485}], "baseline_mean_us": 189.3638, "candidate_mean_us": 67.49158333333334, "saved_mean_us": 121.87221666666666, "baseline_median_us": 188.2611, "candidate_median_us": 67.569875, "saved_mean_ci95_us": [119.38690833333334, 125.19718333333331], "max_mean_us": null, "checks": {"positive_mean": true, "positive_median": true, "ci_lower_positive": true}, "status": "PASS"}
+
+=== 本轮完整统计结果（原始 JSON） ===
+{
+  "status": "PASS",
+  "hardware_scope": "910B development measurements; Atlas A3 acceptance pending",
+  "environment": {
+    "hostname": "eaddb6692ee6",
+    "python": "3.12.13",
+    "device": "Ascend910B3",
+    "versions": {
+      "torch": "2.7.1+cpu",
+      "torch-npu": "2.7.1.post8",
+      "triton-ascend": "3.6.0.post2"
+    },
+    "cann": "9.1.0",
+    "visible_devices": "0"
+  },
+  "protocol": {
+    "warmup": 50,
+    "rounds": 6,
+    "iterations_per_round": 200,
+    "timer": "perf_counter_ns; final NPU synchronize included",
+    "resamples": 10000,
+    "seed": 20261031,
+    "quantile": "linear"
+  },
+  "source_sha256": {
+    "xllm/python/kernels_npu/triton/packed_page_indices.py": "a11e70a215c164edbd347b8d6530cd8cbefc835411357e77b0a611a1fa339772",
+    "xllm/core/kernels/npu/xllm_ops/packed_page_indices.cpp": "e45815e4bf982c6d491429056729b6b61196881ac0a33d9cbfba4d879504ef34"
+  },
+  "benchmarks": [
+    {
+      "id": "packed_perf_small",
+      "route": "fused",
+      "pairs": [
+        {
+          "round": 1,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ],
+          "baseline_us": 220.40965,
+          "candidate_us": 39.8463
+        },
+        {
+          "round": 2,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ],
+          "candidate_us": 50.0536,
+          "baseline_us": 193.22865
+        },
+        {
+          "round": 3,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ],
+          "baseline_us": 191.80885,
+          "candidate_us": 36.61695
+        },
+        {
+          "round": 4,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ],
+          "candidate_us": 35.97955,
+          "baseline_us": 187.5855
+        },
+        {
+          "round": 5,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ],
+          "baseline_us": 192.09695,
+          "candidate_us": 36.4244
+        },
+        {
+          "round": 6,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ],
+          "candidate_us": 36.8712,
+          "baseline_us": 182.7651
+        }
+      ],
+      "baseline_mean_us": 194.64911666666669,
+      "candidate_mean_us": 39.29866666666666,
+      "saved_mean_us": 155.35045000000002,
+      "baseline_median_us": 191.9529,
+      "candidate_median_us": 36.744075,
+      "saved_mean_ci95_us": [
+        147.48929166666667,
+        165.954925
+      ],
+      "max_mean_us": 40,
+      "checks": {
+        "positive_mean": true,
+        "positive_median": true,
+        "ci_lower_positive": true,
+        "mean_limit": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "packed_perf_large",
+      "route": "packed_triton_map",
+      "pairs": [
+        {
+          "round": 1,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ],
+          "baseline_us": 186.10705,
+          "candidate_us": 66.85355
+        },
+        {
+          "round": 2,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ],
+          "candidate_us": 68.0046,
+          "baseline_us": 185.45305
+        },
+        {
+          "round": 3,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ],
+          "baseline_us": 186.09935,
+          "candidate_us": 68.68955
+        },
+        {
+          "round": 4,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ],
+          "candidate_us": 66.134,
+          "baseline_us": 189.3758
+        },
+        {
+          "round": 5,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ],
+          "baseline_us": 185.58495,
+          "candidate_us": 66.4879
+        },
+        {
+          "round": 6,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ],
+          "candidate_us": 65.6998,
+          "baseline_us": 189.9323
+        }
+      ],
+      "baseline_mean_us": 187.09208333333333,
+      "candidate_mean_us": 66.97823333333332,
+      "saved_mean_us": 120.11385000000001,
+      "baseline_median_us": 186.1032,
+      "candidate_median_us": 66.670725,
+      "saved_mean_ci95_us": [
+        118.03080833333333,
+        122.2426
+      ],
+      "max_mean_us": 75,
+      "checks": {
+        "positive_mean": true,
+        "positive_median": true,
+        "ci_lower_positive": true,
+        "mean_limit": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "packed_route_32736",
+      "route": "packed_triton_map",
+      "pairs": [
+        {
+          "round": 1,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ],
+          "baseline_us": 189.03735,
+          "candidate_us": 67.7604
+        },
+        {
+          "round": 2,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ],
+          "candidate_us": 67.9788,
+          "baseline_us": 188.96475
+        },
+        {
+          "round": 3,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ],
+          "baseline_us": 187.43545,
+          "candidate_us": 66.1022
+        },
+        {
+          "round": 4,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ],
+          "candidate_us": 66.56385,
+          "baseline_us": 195.81665
+        },
+        {
+          "round": 5,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ],
+          "baseline_us": 184.86935,
+          "candidate_us": 67.3809
+        },
+        {
+          "round": 6,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ],
+          "candidate_us": 67.6733,
+          "baseline_us": 190.292
+        }
+      ],
+      "baseline_mean_us": 189.40259166666667,
+      "candidate_mean_us": 67.24324166666666,
+      "saved_mean_us": 122.15935,
+      "baseline_median_us": 189.00105000000002,
+      "candidate_median_us": 67.52709999999999,
+      "saved_mean_ci95_us": [
+        119.60632500000001,
+        125.27425833333332
+      ],
+      "max_mean_us": null,
+      "checks": {
+        "positive_mean": true,
+        "positive_median": true,
+        "ci_lower_positive": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "packed_route_32768",
+      "route": "packed_triton_map",
+      "pairs": [
+        {
+          "round": 1,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ],
+          "baseline_us": 197.7239,
+          "candidate_us": 68.11875
+        },
+        {
+          "round": 2,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ],
+          "candidate_us": 66.6844,
+          "baseline_us": 185.52975
+        },
+        {
+          "round": 3,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ],
+          "baseline_us": 187.75735,
+          "candidate_us": 67.6478
+        },
+        {
+          "round": 4,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ],
+          "candidate_us": 67.50395,
+          "baseline_us": 190.50135
+        },
+        {
+          "round": 5,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ],
+          "baseline_us": 185.9056,
+          "candidate_us": 67.3588
+        },
+        {
+          "round": 6,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ],
+          "candidate_us": 67.6358,
+          "baseline_us": 188.76485
+        }
+      ],
+      "baseline_mean_us": 189.3638,
+      "candidate_mean_us": 67.49158333333334,
+      "saved_mean_us": 121.87221666666666,
+      "baseline_median_us": 188.2611,
+      "candidate_median_us": 67.569875,
+      "saved_mean_ci95_us": [
+        119.38690833333334,
+        125.19718333333331
+      ],
+      "max_mean_us": null,
+      "checks": {
+        "positive_mean": true,
+        "positive_median": true,
+        "ci_lower_positive": true
+      },
+      "status": "PASS"
+    }
+  ]
+}
