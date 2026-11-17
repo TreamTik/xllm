@@ -1,0 +1,1200 @@
+{
+  "task_number": 5,
+  "input_cases": [
+    {
+      "id": "slot_literal",
+      "values": [
+        [
+          -1,
+          0,
+          3,
+          4,
+          7,
+          8,
+          15,
+          -2
+        ],
+        [
+          [
+            3,
+            0,
+            6,
+            1
+          ],
+          [
+            5,
+            2,
+            7,
+            4
+          ]
+        ]
+      ],
+      "attributes": {
+        "block_size": 4
+      },
+      "expected": [
+        [
+          -1,
+          12,
+          15,
+          0,
+          3,
+          24,
+          7,
+          -1
+        ],
+        [
+          -1,
+          20,
+          23,
+          8,
+          11,
+          28,
+          19,
+          -1
+        ]
+      ]
+    },
+    {
+      "id": "slot_single",
+      "values": [
+        [
+          0,
+          15,
+          -9
+        ],
+        [
+          3,
+          0,
+          6,
+          1
+        ]
+      ],
+      "attributes": {
+        "block_size": 4
+      },
+      "expected": [
+        12,
+        7,
+        -1
+      ]
+    },
+    {
+      "id": "slot_empty",
+      "tokens": 0
+    },
+    {
+      "id": "slot_one_size",
+      "tokens": 33,
+      "block_size": 1,
+      "layers": 3,
+      "blocks": 17
+    },
+    {
+      "id": "slot_nonpower",
+      "tokens": 257,
+      "block_size": 17,
+      "layers": 3,
+      "blocks": 129,
+      "offset": true
+    },
+    {
+      "id": "slot_all_padding",
+      "values": [
+        [
+          -1,
+          -7
+        ],
+        [
+          [
+            3,
+            0,
+            6,
+            1
+          ],
+          [
+            5,
+            2,
+            7,
+            4
+          ]
+        ]
+      ],
+      "attributes": {
+        "block_size": 128
+      }
+    },
+    {
+      "id": "slot_max_i32",
+      "values": [
+        [
+          0,
+          1,
+          -1
+        ],
+        [
+          [
+            2147483646,
+            2147483647
+          ]
+        ]
+      ],
+      "attributes": {
+        "block_size": 1
+      }
+    },
+    {
+      "id": "slot_boundary257",
+      "tokens": 257,
+      "block_size": 128,
+      "layers": 1,
+      "blocks": 257
+    },
+    {
+      "id": "slot_perf_small",
+      "tokens": 512,
+      "layers": 8,
+      "blocks": 4096,
+      "performance": true
+    },
+    {
+      "id": "slot_perf_large",
+      "tokens": 65536,
+      "layers": 32,
+      "blocks": 4096,
+      "performance": true
+    },
+    {
+      "id": "slot_route_below",
+      "tokens": 4095,
+      "layers": 8,
+      "blocks": 509,
+      "block_size": 64,
+      "seed": 511,
+      "generalization": {
+        "purpose": "页长 64，8 层、4,095 个槽位产生 32,760 个输出，覆盖幂二页长的小输入融合分支。",
+        "measure": false,
+        "expected_sha256": "96bc20c8f9513b7b3d921f488b197215fa0be0f7026b847c21b5db215d0a5dc9",
+        "input_shapes": [
+          [
+            4095
+          ],
+          [
+            8,
+            509
+          ]
+        ],
+        "output_shape": [
+          8,
+          4095
+        ]
+      }
+    },
+    {
+      "id": "slot_route_at_pow2",
+      "tokens": 4096,
+      "layers": 8,
+      "blocks": 509,
+      "block_size": 64,
+      "seed": 511,
+      "generalization": {
+        "purpose": "8 层、4,096 个槽位，恰有 32,768 个输出，测试页长 64 的大输入索引生成与查表。",
+        "measure": true,
+        "expected_sha256": "6e7fd2fab27d7ebf3d2f798ca80fe6aed08bd448b06bfa54daf9850b09ad766f",
+        "input_shapes": [
+          [
+            4096
+          ],
+          [
+            8,
+            509
+          ]
+        ],
+        "output_shape": [
+          8,
+          4096
+        ]
+      }
+    },
+    {
+      "id": "slot_route_at_nonpower",
+      "tokens": 4096,
+      "layers": 8,
+      "blocks": 509,
+      "block_size": 96,
+      "seed": 511,
+      "generalization": {
+        "purpose": "与页长 64 例有相同输出规模和页映射，改用非幂二页长 96，单独记录精确整除取余路径的耗时。",
+        "measure": true,
+        "expected_sha256": "e09aaa9b08ab7f43384c79bc160378eb97d88abd2133b18b249e535b788838ea",
+        "input_shapes": [
+          [
+            4096
+          ],
+          [
+            8,
+            509
+          ]
+        ],
+        "output_shape": [
+          8,
+          4096
+        ]
+      }
+    },
+    {
+      "id": "slot_wide_page_divmod",
+      "values": [
+        [
+          -2147483648,
+          0,
+          1073741822,
+          1073741823,
+          1073741824,
+          2147483645,
+          2147483646,
+          2147483647
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "attributes": {
+        "block_size": 1073741823
+      },
+      "expected": [
+        -1,
+        1073741823,
+        2147483645,
+        0,
+        1,
+        1073741822,
+        1073741823,
+        1073741824
+      ],
+      "generalization": {
+        "purpose": "使用接近 2³⁰ 的合法非幂二页长与一维映射，手算校验页末、下一页首、INT32_MAX 输入与负填充。",
+        "measure": false,
+        "expected_sha256": "411ad70755dc1407921df2690acc5b6788e4c6fd33ac2a0b8420ebdd3a3759a3",
+        "input_shapes": [
+          [
+            8
+          ],
+          [
+            3
+          ]
+        ],
+        "output_shape": [
+          8
+        ]
+      }
+    }
+  ],
+  "expected_checks": {
+    "result.json": {
+      "cases": [
+        {
+          "id": "slot_literal",
+          "status": "PASS",
+          "checks": {
+            "candidate_mismatches": 0,
+            "baseline_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "inputs_unchanged": true,
+            "independent_storage": true
+          },
+          "shape": [
+            2,
+            8
+          ],
+          "input_shapes": [
+            [
+              8
+            ],
+            [
+              2,
+              4
+            ]
+          ],
+          "attributes": {
+            "block_size": 4
+          }
+        },
+        {
+          "id": "slot_single",
+          "status": "PASS",
+          "checks": {
+            "candidate_mismatches": 0,
+            "baseline_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "inputs_unchanged": true,
+            "independent_storage": true
+          },
+          "shape": [
+            3
+          ],
+          "input_shapes": [
+            [
+              3
+            ],
+            [
+              4
+            ]
+          ],
+          "attributes": {
+            "block_size": 4
+          }
+        },
+        {
+          "id": "slot_empty",
+          "status": "PASS",
+          "checks": {
+            "candidate_mismatches": 0,
+            "baseline_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "inputs_unchanged": true,
+            "independent_storage": true
+          },
+          "shape": [
+            2,
+            0
+          ],
+          "input_shapes": [
+            [
+              0
+            ],
+            [
+              2,
+              31
+            ]
+          ],
+          "attributes": {
+            "block_size": 128
+          }
+        },
+        {
+          "id": "slot_one_size",
+          "status": "PASS",
+          "checks": {
+            "candidate_mismatches": 0,
+            "baseline_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "inputs_unchanged": true,
+            "independent_storage": true
+          },
+          "shape": [
+            3,
+            33
+          ],
+          "input_shapes": [
+            [
+              33
+            ],
+            [
+              3,
+              17
+            ]
+          ],
+          "attributes": {
+            "block_size": 1
+          }
+        },
+        {
+          "id": "slot_nonpower",
+          "status": "PASS",
+          "checks": {
+            "candidate_mismatches": 0,
+            "baseline_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "inputs_unchanged": true,
+            "independent_storage": true
+          },
+          "shape": [
+            3,
+            257
+          ],
+          "input_shapes": [
+            [
+              257
+            ],
+            [
+              3,
+              129
+            ]
+          ],
+          "attributes": {
+            "block_size": 17
+          }
+        },
+        {
+          "id": "slot_all_padding",
+          "status": "PASS",
+          "checks": {
+            "candidate_mismatches": 0,
+            "baseline_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "inputs_unchanged": true,
+            "independent_storage": true
+          },
+          "shape": [
+            2,
+            2
+          ],
+          "input_shapes": [
+            [
+              2
+            ],
+            [
+              2,
+              4
+            ]
+          ],
+          "attributes": {
+            "block_size": 128
+          }
+        },
+        {
+          "id": "slot_max_i32",
+          "status": "PASS",
+          "checks": {
+            "candidate_mismatches": 0,
+            "baseline_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "inputs_unchanged": true,
+            "independent_storage": true
+          },
+          "shape": [
+            1,
+            3
+          ],
+          "input_shapes": [
+            [
+              3
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "attributes": {
+            "block_size": 1
+          }
+        },
+        {
+          "id": "slot_boundary257",
+          "status": "PASS",
+          "checks": {
+            "candidate_mismatches": 0,
+            "baseline_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "inputs_unchanged": true,
+            "independent_storage": true
+          },
+          "shape": [
+            1,
+            257
+          ],
+          "input_shapes": [
+            [
+              257
+            ],
+            [
+              1,
+              257
+            ]
+          ],
+          "attributes": {
+            "block_size": 128
+          }
+        },
+        {
+          "id": "slot_perf_small",
+          "status": "PASS",
+          "checks": {
+            "candidate_mismatches": 0,
+            "baseline_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "inputs_unchanged": true,
+            "independent_storage": true
+          },
+          "shape": [
+            8,
+            512
+          ],
+          "input_shapes": [
+            [
+              512
+            ],
+            [
+              8,
+              4096
+            ]
+          ],
+          "attributes": {
+            "block_size": 128
+          }
+        },
+        {
+          "id": "slot_perf_large",
+          "status": "PASS",
+          "checks": {
+            "candidate_mismatches": 0,
+            "baseline_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "inputs_unchanged": true,
+            "independent_storage": true
+          },
+          "shape": [
+            32,
+            65536
+          ],
+          "input_shapes": [
+            [
+              65536
+            ],
+            [
+              32,
+              4096
+            ]
+          ],
+          "attributes": {
+            "block_size": 128
+          }
+        }
+      ],
+      "negative": [
+        {
+          "id": "input_count",
+          "status": "PASS",
+          "exception": "ValueError"
+        },
+        {
+          "id": "unknown_attribute",
+          "status": "PASS",
+          "exception": "ValueError"
+        },
+        {
+          "id": "cpu_input",
+          "status": "PASS",
+          "exception": "ValueError"
+        },
+        {
+          "id": "dtype",
+          "status": "PASS",
+          "exception": "TypeError"
+        },
+        {
+          "id": "noncontiguous",
+          "status": "PASS",
+          "exception": "ValueError"
+        },
+        {
+          "id": "negative_mapping",
+          "status": "PASS",
+          "exception": "ValueError"
+        },
+        {
+          "id": "logical_address_out_of_range",
+          "status": "PASS",
+          "exception": "ValueError"
+        },
+        {
+          "id": "zero_block_size",
+          "status": "PASS",
+          "exception": "ValueError"
+        },
+        {
+          "id": "bool_block_size",
+          "status": "PASS",
+          "exception": "ValueError"
+        },
+        {
+          "id": "output_int32_overflow",
+          "status": "PASS",
+          "exception": "ValueError"
+        }
+      ],
+      "dynamic_updates": {
+        "slot_perf_small": [
+          {
+            "id": "logical_values_changed",
+            "status": "PASS",
+            "candidate_mismatches": 0,
+            "compared_with": "independent CPU oracle; outside performance timing"
+          },
+          {
+            "id": "mapping_values_changed",
+            "status": "PASS",
+            "candidate_mismatches": 0,
+            "compared_with": "independent CPU oracle; outside performance timing"
+          }
+        ],
+        "slot_perf_large": [
+          {
+            "id": "logical_values_changed",
+            "status": "PASS",
+            "candidate_mismatches": 0,
+            "compared_with": "independent CPU oracle; outside performance timing"
+          },
+          {
+            "id": "mapping_values_changed",
+            "status": "PASS",
+            "candidate_mismatches": 0,
+            "compared_with": "independent CPU oracle; outside performance timing"
+          },
+          {
+            "id": "large_path_int32_output_boundary",
+            "status": "PASS",
+            "candidate_mismatches": 0,
+            "compared_with": "independent CPU oracle; outside performance timing"
+          }
+        ]
+      },
+      "storage_rebindings": {
+        "slot_perf_small": [
+          {
+            "id": "mapping_set_storage",
+            "status": "PASS",
+            "candidate_mismatches": 0,
+            "storage_offset": 1,
+            "pointer_changed": true,
+            "old_alignment_mod16": 0,
+            "new_alignment_mod16": 4
+          },
+          {
+            "id": "logical_set_storage",
+            "status": "PASS",
+            "candidate_mismatches": 0,
+            "storage_offset": 1,
+            "pointer_changed": true,
+            "old_alignment_mod16": 0,
+            "new_alignment_mod16": 4
+          }
+        ],
+        "slot_perf_large": [
+          {
+            "id": "mapping_set_storage",
+            "status": "PASS",
+            "candidate_mismatches": 0,
+            "storage_offset": 1,
+            "pointer_changed": true,
+            "old_alignment_mod16": 0,
+            "new_alignment_mod16": 4
+          },
+          {
+            "id": "logical_set_storage",
+            "status": "PASS",
+            "candidate_mismatches": 0,
+            "storage_offset": 1,
+            "pointer_changed": true,
+            "old_alignment_mod16": 0,
+            "new_alignment_mod16": 4
+          }
+        ]
+      },
+      "engineering": {
+        "two_streams": "PASS",
+        "retained_outputs_independent": "PASS",
+        "repeat20_released": "PASS",
+        "active_before_bytes": 134144,
+        "active_after_bytes": 134144,
+        "peak_increment_bytes": 16896,
+        "output_bytes": 16384,
+        "baseline_peak_increment_bytes": 108544,
+        "baseline_output_bytes": 16384,
+        "baseline_active_before_bytes": 134144,
+        "baseline_active_after_bytes": 134144,
+        "candidate_minus_baseline_peak_bytes": -91648,
+        "peak_definition": "Warmed PyTorch active allocation for one complete prepared call on identical inputs; excludes persistent prepared input/layout buffers in both; not total HBM or all runtime scratch"
+      },
+      "engineering_by_case": {
+        "slot_perf_small": {
+          "two_streams": "PASS",
+          "retained_outputs_independent": "PASS",
+          "repeat20_released": "PASS",
+          "active_before_bytes": 134144,
+          "active_after_bytes": 134144,
+          "peak_increment_bytes": 16896,
+          "output_bytes": 16384,
+          "baseline_peak_increment_bytes": 108544,
+          "baseline_output_bytes": 16384,
+          "baseline_active_before_bytes": 134144,
+          "baseline_active_after_bytes": 134144,
+          "candidate_minus_baseline_peak_bytes": -91648,
+          "peak_definition": "Warmed PyTorch active allocation for one complete prepared call on identical inputs; excludes persistent prepared input/layout buffers in both; not total HBM or all runtime scratch"
+        },
+        "slot_perf_large": {
+          "two_streams": "PASS",
+          "retained_outputs_independent": "PASS",
+          "repeat20_released": "PASS",
+          "active_before_bytes": 787456,
+          "active_after_bytes": 787456,
+          "peak_increment_bytes": 10226688,
+          "output_bytes": 8388608,
+          "baseline_peak_increment_bytes": 44044288,
+          "baseline_output_bytes": 8388608,
+          "baseline_active_before_bytes": 787456,
+          "baseline_active_after_bytes": 787456,
+          "candidate_minus_baseline_peak_bytes": -33817600,
+          "peak_definition": "Warmed PyTorch active allocation for one complete prepared call on identical inputs; excludes persistent prepared input/layout buffers in both; not total HBM or all runtime scratch"
+        }
+      },
+      "large_nonpower_boundaries": [
+        {
+          "id": "large_nonpower_3_near_i32",
+          "shape": [
+            32,
+            65536
+          ],
+          "candidate_mismatches": 0,
+          "baseline_mismatches": 0,
+          "status": "PASS"
+        },
+        {
+          "id": "large_nonpower_7_near_i32",
+          "shape": [
+            32,
+            65536
+          ],
+          "candidate_mismatches": 0,
+          "baseline_mismatches": 0,
+          "status": "PASS"
+        },
+        {
+          "id": "large_nonpower_31_near_i32",
+          "shape": [
+            32,
+            65536
+          ],
+          "candidate_mismatches": 0,
+          "baseline_mismatches": 0,
+          "status": "PASS"
+        }
+      ],
+      "large_logical_i32_boundary": {
+        "id": "large_logical_i32_nonpower",
+        "status": "PASS",
+        "checks": {
+          "candidate_mismatches": 0,
+          "baseline_mismatches": 0,
+          "shape": true,
+          "dtype": true,
+          "npu": true,
+          "contiguous": true,
+          "inputs_unchanged": true,
+          "independent_storage": true
+        },
+        "shape": [
+          32,
+          1024
+        ],
+        "input_shapes": [
+          [
+            1024
+          ],
+          [
+            32,
+            3
+          ]
+        ],
+        "attributes": {
+          "block_size": 1073741823
+        }
+      },
+      "small_logical_i32_boundary": {
+        "id": "small_logical_i32_nonpower",
+        "status": "PASS",
+        "checks": {
+          "candidate_mismatches": 0,
+          "baseline_mismatches": 0,
+          "shape": true,
+          "dtype": true,
+          "npu": true,
+          "contiguous": true,
+          "inputs_unchanged": true,
+          "independent_storage": true
+        },
+        "shape": [
+          7
+        ],
+        "input_shapes": [
+          [
+            7
+          ],
+          [
+            3
+          ]
+        ],
+        "attributes": {
+          "block_size": 1073741823
+        }
+      },
+      "power2_logical_i32_boundaries": [
+        {
+          "id": "large_logical_i32_power2",
+          "status": "PASS",
+          "checks": {
+            "candidate_mismatches": 0,
+            "baseline_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "inputs_unchanged": true,
+            "independent_storage": true
+          },
+          "shape": [
+            32,
+            1024
+          ],
+          "input_shapes": [
+            [
+              1024
+            ],
+            [
+              32,
+              3
+            ]
+          ],
+          "attributes": {
+            "block_size": 1073741824
+          }
+        },
+        {
+          "id": "small_logical_i32_power2",
+          "status": "PASS",
+          "checks": {
+            "candidate_mismatches": 0,
+            "baseline_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "inputs_unchanged": true,
+            "independent_storage": true
+          },
+          "shape": [
+            7
+          ],
+          "input_shapes": [
+            [
+              7
+            ],
+            [
+              3
+            ]
+          ],
+          "attributes": {
+            "block_size": 1073741824
+          }
+        }
+      ]
+    }
+  },
+  "supplement_checks": {},
+  "required_comparisons": [
+    [
+      "result.json",
+      "benchmarks[0]"
+    ],
+    [
+      "result.json",
+      "benchmarks[1]"
+    ]
+  ],
+  "performance_reference": {
+    "number": "05",
+    "title": "token slot地址翻译",
+    "path": "operators/task05_slot",
+    "functional_records": 36,
+    "functional_pass": true,
+    "source_current": true,
+    "environment": {
+      "utc": "2026-10-30T19:04:14.178082+00:00",
+      "hostname": "A03-R40-I191-103-4100002.JD.LOCAL",
+      "python": "3.11.14",
+      "device": "Ascend910_9382",
+      "versions": {
+        "torch": "2.9.0+cpu",
+        "torch-npu": "2.9.0.post1+gitee7ba04",
+        "triton-ascend": "3.2.0.dev20260322"
+      },
+      "triton_target": "GPUTarget(backend='npu', arch='Ascend910_9382', warp_size=0)",
+      "source_sha256": {
+        "baseline.py": "4f27791502c72323ec8b85c507dcac90935332a20dca1b2ee8165d56c86222c4",
+        "case.json": "25b825fc98104a684c40f2a2f4ac2d7fe670a51c5af7f679367f66520bc51023",
+        "contract.py": "12de410b65e1059e6587c6f0b864570587ba22f9d790bbf9e424bcbd87081ce4",
+        "generate_data.py": "78188adfa2897a32901df25569904ef64b397384d5cba6b227f8ee0d97c5d27d",
+        "golden.py": "131c57a1bdf7a46b4a68a0d3a82ff3ef3248820430be6f63f65c2d0d46606bbf",
+        "metadata.json": "5e700a435bb31ec4c71e582e17c229f2863990356dc7c0f5a9b2f434331e0aa3",
+        "paired_statistics.py": "fc4b75b3a17618bad99d79243833815fd686fed2fd457cee7ef9cfa137128f56",
+        "probe_numeric.py": "b9cf1c3999350ee30bd2b68262280a9c764d731369f669c62b4d908446e8f8c3",
+        "probe_stage2.py": "782520ac7553df517c395ce2242d35bbe3cd5d46d278f655fbd9e01f5f706dfc",
+        "solution.py": "be051c3a568f03e634e70c3dbd00eab14c0d275bbffada824111792b83c67de6",
+        "verify.py": "fffc3a302a671e63a4fa6d72e91c61c42fe9f08f8f5402150f049cb5c0842061"
+      }
+    },
+    "metrics": [
+      {
+        "id": "slot_perf_small",
+        "baseline_key": "baseline",
+        "required": true,
+        "source_file": "task_submission/result.json",
+        "source_path": "benchmarks[0]",
+        "baseline_mean_us": 172.58545166666667,
+        "candidate_mean_us": 54.83898666666667,
+        "saved_mean_us": 117.746465,
+        "baseline_median_us": 173.2734725,
+        "candidate_median_us": 54.81583500000001,
+        "saved_median_us": 118.45763749999999,
+        "baseline_rounds_us": [
+          168.58644,
+          174.28413,
+          174.24948,
+          173.04457,
+          173.502375,
+          171.84571499999998
+        ],
+        "candidate_rounds_us": [
+          54.829035000000005,
+          54.537335,
+          54.94044,
+          54.721685,
+          55.20279,
+          54.802635
+        ],
+        "saved_mean_ci95_us": [
+          116.028495,
+          119.11847333333334
+        ],
+        "iterations": 200,
+        "warmup": 50,
+        "original_unit": "us",
+        "round_order": [
+          [
+            "baseline_us",
+            "candidate_us"
+          ],
+          [
+            "candidate_us",
+            "baseline_us"
+          ],
+          [
+            "baseline_us",
+            "candidate_us"
+          ],
+          [
+            "candidate_us",
+            "baseline_us"
+          ],
+          [
+            "baseline_us",
+            "candidate_us"
+          ],
+          [
+            "candidate_us",
+            "baseline_us"
+          ]
+        ],
+        "measurement_protocol": null,
+        "call_pair_order": null
+      },
+      {
+        "id": "slot_perf_large",
+        "baseline_key": "baseline",
+        "required": true,
+        "source_file": "task_submission/result.json",
+        "source_path": "benchmarks[1]",
+        "baseline_mean_us": 656.9370766666666,
+        "candidate_mean_us": 123.635755,
+        "saved_mean_us": 533.3013216666666,
+        "baseline_median_us": 657.0265374999999,
+        "candidate_median_us": 123.51285250000001,
+        "saved_median_us": 533.5136849999999,
+        "baseline_rounds_us": [
+          655.8977,
+          655.91135,
+          658.23137,
+          657.470965,
+          657.528965,
+          656.58211
+        ],
+        "candidate_rounds_us": [
+          123.60753,
+          123.41602999999999,
+          124.09572999999999,
+          123.418175,
+          123.887935,
+          123.38913000000001
+        ],
+        "saved_mean_ci95_us": [
+          532.7278733333333,
+          533.8607183333334
+        ],
+        "iterations": 200,
+        "warmup": 50,
+        "original_unit": "us",
+        "round_order": [
+          [
+            "baseline_us",
+            "candidate_us"
+          ],
+          [
+            "candidate_us",
+            "baseline_us"
+          ],
+          [
+            "baseline_us",
+            "candidate_us"
+          ],
+          [
+            "candidate_us",
+            "baseline_us"
+          ],
+          [
+            "baseline_us",
+            "candidate_us"
+          ],
+          [
+            "candidate_us",
+            "baseline_us"
+          ]
+        ],
+        "measurement_protocol": null,
+        "call_pair_order": null
+      }
+    ],
+    "result_sources": [
+      {
+        "path": "task_submission/result.json",
+        "sha256": "cd1e444ed2f3fda2bf90548df7b24669299cc51bbc558cb675eea4a81fbf1104"
+      }
+    ],
+    "source_hashes": {
+      "baseline.py": "4f27791502c72323ec8b85c507dcac90935332a20dca1b2ee8165d56c86222c4",
+      "case.json": "25b825fc98104a684c40f2a2f4ac2d7fe670a51c5af7f679367f66520bc51023",
+      "contract.py": "12de410b65e1059e6587c6f0b864570587ba22f9d790bbf9e424bcbd87081ce4",
+      "generate_data.py": "78188adfa2897a32901df25569904ef64b397384d5cba6b227f8ee0d97c5d27d",
+      "golden.py": "131c57a1bdf7a46b4a68a0d3a82ff3ef3248820430be6f63f65c2d0d46606bbf",
+      "metadata.json": "5e700a435bb31ec4c71e582e17c229f2863990356dc7c0f5a9b2f434331e0aa3",
+      "paired_statistics.py": "fc4b75b3a17618bad99d79243833815fd686fed2fd457cee7ef9cfa137128f56",
+      "probe_numeric.py": "b9cf1c3999350ee30bd2b68262280a9c764d731369f669c62b4d908446e8f8c3",
+      "probe_stage2.py": "782520ac7553df517c395ce2242d35bbe3cd5d46d278f655fbd9e01f5f706dfc",
+      "solution.py": "be051c3a568f03e634e70c3dbd00eab14c0d275bbffada824111792b83c67de6",
+      "verify.py": "fffc3a302a671e63a4fa6d72e91c61c42fe9f08f8f5402150f049cb5c0842061"
+    },
+    "memory": [
+      {
+        "id": "slot_perf_small",
+        "baseline_bytes": 108544,
+        "candidate_bytes": 16896,
+        "residual_bytes": 0,
+        "output_bytes": 16384,
+        "checks": "{\"two_streams\":\"PASS\",\"retained_outputs_independent\":\"PASS\",\"repeat20_released\":\"PASS\",\"active_before_bytes\":134144,\"active_after_bytes\":134144,\"peak_increment_bytes\":16896,\"output_bytes\":16384,\"baseline_peak_increment_bytes\":108544,\"baseline_output_bytes\":16384,\"baseline_active_before_bytes\":134144,\"baseline_active_after_bytes\":134144,\"candidate_minus_baseline_peak_bytes\":-91648,\"peak_definition\":\"Warmed PyTorch active allocation for one complete…（完整记录见 JSON）",
+        "status": "工程检查通过；峰值观测",
+        "measurement_scope": "活跃分配增量"
+      },
+      {
+        "id": "slot_perf_large",
+        "baseline_bytes": 44044288,
+        "candidate_bytes": 10226688,
+        "residual_bytes": 0,
+        "output_bytes": 8388608,
+        "checks": "{\"two_streams\":\"PASS\",\"retained_outputs_independent\":\"PASS\",\"repeat20_released\":\"PASS\",\"active_before_bytes\":787456,\"active_after_bytes\":787456,\"peak_increment_bytes\":10226688,\"output_bytes\":8388608,\"baseline_peak_increment_bytes\":44044288,\"baseline_output_bytes\":8388608,\"baseline_active_before_bytes\":787456,\"baseline_active_after_bytes\":787456,\"candidate_minus_baseline_peak_bytes\":-33817600,\"peak_definition\":\"Warmed PyTorch active allocation for…（完整记录见 JSON）",
+        "status": "工程检查通过；峰值观测",
+        "measurement_scope": "活跃分配增量"
+      }
+    ]
+  },
+  "acceptance": {
+    "unit": "us",
+    "resamples": 10000,
+    "seed": 20261031,
+    "percentile": "linear",
+    "historical_results_are_not_new_passes": true,
+    "max_mean_us": {
+      "slot_perf_small": 85,
+      "slot_perf_large": 155
+    },
+    "measurement_protocol": {
+      "warmup": 50,
+      "rounds": 6,
+      "iterations_per_round": 200,
+      "execution_order": "alternate baseline and candidate; retain all paired rounds",
+      "timed_entry": "prepared.run",
+      "includes": [
+        "Python submission",
+        "new outputs and per-call temporary allocations",
+        "device execution and completion synchronization"
+      ],
+      "excludes": [
+        "input generation and transfer",
+        "one-time validation",
+        "prepare",
+        "CPU golden",
+        "first compilation"
+      ],
+      "latency_unit": "us",
+      "per_round_latency": "elapsed wall time of 200 calls including final device synchronization, divided by 200",
+      "target_statistic": "arithmetic mean of six per-round per-call latencies",
+      "source_requirements_text": "### 3.3 性能要求\n\n每个主性能 case 均使用相同输入，在同一设备、同一软件环境下比较提交实现与基准。逐项满足：\n\n1. 基准耗时均值 − 提交实现耗时均值 > 0 μs。\n2. 基准耗时中位数 − 提交实现耗时中位数 > 0 μs。\n3. 配对轮次耗时差均值的 95% bootstrap 置信区间下界 > 0 μs。\n4. 提交实现 6 轮单次调用耗时的算术均值，不超过下表对应的目标耗时上限。\n\n预热 50 次，正式计时 6 轮，每轮 200 次，交替执行基准和提交实现。使用全部 6 轮配对数据，进行 10000 次共同重采样，seed=20261031，分位数使用线性插值。\n\n计时从完整 prepared.run 调用开始，到设备工作完成并同步结束，包含 Python 提交、新输出及当次临时张量分配和设备计算。输入生成与传输、一次性校验、prepare、CPU 标杆计算及首次编译不计入。两侧均按相同范围计时，不能只计设备核执行时间。"
+    }
+  },
+  "source_sha256": {
+    "reference": {
+      "public_api.py": "131c57a1bdf7a46b4a68a0d3a82ff3ef3248820430be6f63f65c2d0d46606bbf",
+      "baseline.py": "4f27791502c72323ec8b85c507dcac90935332a20dca1b2ee8165d56c86222c4",
+      "contract.py": "12de410b65e1059e6587c6f0b864570587ba22f9d790bbf9e424bcbd87081ce4"
+    }
+  },
+  "generalization": {
+    "case_ids": [
+      "slot_route_below",
+      "slot_route_at_pow2",
+      "slot_route_at_nonpower",
+      "slot_wide_page_divmod"
+    ],
+    "diagnostic_ids": [
+      "slot_route_at_pow2",
+      "slot_route_at_nonpower"
+    ],
+    "correctness_required": true,
+    "performance_gate": null
+  },
+  "accuracy_requirements": {
+    "rule": "integer outputs must match the independent CPU golden exactly; all prescribed metadata, ownership and engineering checks must pass",
+    "requirements_text": "### 3.2 精度要求\n\n#### 功能通过条件\n\n非负slot满足 `M[layer,slot//S]×S+slot%S`，负slot为−1；提交实现与基线对CPU golden逐元素零差异；shape、dtype、输入不变、输出独立和全部边界检查通过。\n\n全部整数输出与独立golden精确相等，包括高位整数除法、余数和负padding；输出形状、设备、存储独立、输入不变及10项拒绝检查通过。两个主性能输入都执行双stream、保留输出不别名和20次释放检查。非法输出溢出必须在prepare拒绝。\n\n`values, attrs = generate_data.generate(case)`；`golden.calculate(values, attrs, single)` 返回 CPU 列表标杆。`single` 根据 M 的维数确定。NPU 输入均为 int32，整数中间计算保持精确。"
+  }
+}
