@@ -1,0 +1,2903 @@
+{
+  "metadata": {
+    "operator": "TokenOffsetTileFlags",
+    "source_commit": "ff57b5cacc6d2ca7074a81bb094655f9c47a9feb",
+    "source_sha256": "63583f5340ac310ab9a1e95dd398b1659b9a113d611ad96d94459748ca5f232a",
+    "scope": "Ascend910B3 development validation; Atlas A3 acceptance pending",
+    "environment": {
+      "ASCEND_HOME_PATH": "/usr/local/Ascend/cann-9.1.0",
+      "ASCEND_TOOLKIT_HOME": "/usr/local/Ascend/cann-9.1.0",
+      "libascendcl": "/usr/local/Ascend/cann-9.1.0/aarch64-linux/lib64/libascendcl.so",
+      "CANN": "9.1.0",
+      "hardware": "Ascend910B3",
+      "visible_device": "0",
+      "cpu_threads": 1,
+      "max_jobs": 2
+    },
+    "versions": {
+      "torch": "2.7.1+cpu",
+      "torch-npu": "2.7.1.post8",
+      "triton-ascend": "3.6.0.post2",
+      "numpy": "2.5.4"
+    },
+    "full_run_exit": 0,
+    "portable_engineering_exit": 0
+  },
+  "full_run_engineering": [
+    {
+      "id": "flags_perf_small",
+      "records": {
+        "candidate": {
+          "two_streams": "PASS",
+          "retained_outputs": 6,
+          "repeat20_released": "PASS",
+          "active_before_bytes": 87040,
+          "active_after_bytes": 87040,
+          "peak_increment_bytes": 512,
+          "retained_output_checks": [
+            {
+              "stream": 0,
+              "output": 0,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 0,
+              "output": 1,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 0,
+              "output": 2,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 1,
+              "output": 0,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 1,
+              "output": 1,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 1,
+              "output": 2,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            }
+          ],
+          "single_call_checks": {
+            "candidate_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "independent_storage": true
+          },
+          "release_checks": [
+            {
+              "call": 1,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 2,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 3,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 4,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 5,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 6,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 7,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 8,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 9,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 10,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 11,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 12,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 13,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 14,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 15,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 16,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 17,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 18,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 19,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 20,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            }
+          ],
+          "residual_bytes": 0,
+          "output_bytes": 136,
+          "status": "PASS"
+        },
+        "baseline": {
+          "two_streams": "PASS",
+          "retained_outputs": 6,
+          "repeat20_released": "PASS",
+          "active_before_bytes": 87040,
+          "active_after_bytes": 87040,
+          "peak_increment_bytes": 507904,
+          "retained_output_checks": [
+            {
+              "stream": 0,
+              "output": 0,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 0,
+              "output": 1,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 0,
+              "output": 2,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 1,
+              "output": 0,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 1,
+              "output": 1,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 1,
+              "output": 2,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            }
+          ],
+          "single_call_checks": {
+            "candidate_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "independent_storage": true
+          },
+          "release_checks": [
+            {
+              "call": 1,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 2,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 3,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 4,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 5,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 6,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 7,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 8,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 9,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 10,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 11,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 12,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 13,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 14,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 15,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 16,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 17,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 18,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 19,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            },
+            {
+              "call": 20,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 87040,
+              "residual_bytes": 0
+            }
+          ],
+          "residual_bytes": 0,
+          "output_bytes": 136,
+          "status": "PASS"
+        }
+      }
+    },
+    {
+      "id": "flags_perf_large",
+      "records": {
+        "candidate": {
+          "two_streams": "PASS",
+          "retained_outputs": 6,
+          "repeat20_released": "PASS",
+          "active_before_bytes": 1118208,
+          "active_after_bytes": 1118208,
+          "peak_increment_bytes": 2560,
+          "retained_output_checks": [
+            {
+              "stream": 0,
+              "output": 0,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 0,
+              "output": 1,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 0,
+              "output": 2,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 1,
+              "output": 0,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 1,
+              "output": 1,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 1,
+              "output": 2,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            }
+          ],
+          "single_call_checks": {
+            "candidate_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "independent_storage": true
+          },
+          "release_checks": [
+            {
+              "call": 1,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 2,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 3,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 4,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 5,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 6,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 7,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 8,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 9,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 10,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 11,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 12,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 13,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 14,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 15,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 16,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 17,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 18,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 19,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 20,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            }
+          ],
+          "residual_bytes": 0,
+          "output_bytes": 2080,
+          "status": "PASS"
+        },
+        "baseline": {
+          "two_streams": "PASS",
+          "retained_outputs": 6,
+          "repeat20_released": "PASS",
+          "active_before_bytes": 1118208,
+          "active_after_bytes": 1118208,
+          "peak_increment_bytes": 7724032,
+          "retained_output_checks": [
+            {
+              "stream": 0,
+              "output": 0,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 0,
+              "output": 1,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 0,
+              "output": 2,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 1,
+              "output": 0,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 1,
+              "output": 1,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            },
+            {
+              "stream": 1,
+              "output": 2,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              }
+            }
+          ],
+          "single_call_checks": {
+            "candidate_mismatches": 0,
+            "shape": true,
+            "dtype": true,
+            "npu": true,
+            "contiguous": true,
+            "independent_storage": true
+          },
+          "release_checks": [
+            {
+              "call": 1,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 2,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 3,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 4,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 5,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 6,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 7,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 8,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 9,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 10,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 11,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 12,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 13,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 14,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 15,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 16,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 17,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 18,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 19,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            },
+            {
+              "call": 20,
+              "checks": {
+                "candidate_mismatches": 0,
+                "shape": true,
+                "dtype": true,
+                "npu": true,
+                "contiguous": true,
+                "independent_storage": true
+              },
+              "active_after_bytes": 1118208,
+              "residual_bytes": 0
+            }
+          ],
+          "residual_bytes": 0,
+          "output_bytes": 2080,
+          "status": "PASS"
+        }
+      }
+    }
+  ],
+  "portable_entry_supplement": {
+    "platform_scope": "Ascend910B3 development validation; Atlas A3 acceptance pending",
+    "python": "3.12.13",
+    "device": "Ascend910B3",
+    "versions": {
+      "torch": "2.7.1+cpu",
+      "torch-npu": "2.7.1.post8",
+      "triton-ascend": "3.6.0.post2",
+      "numpy": "2.5.4"
+    },
+    "source_sha256": "63583f5340ac310ab9a1e95dd398b1659b9a113d611ad96d94459748ca5f232a",
+    "engineering": [
+      {
+        "id": "flags_perf_small",
+        "records": {
+          "candidate": {
+            "two_streams": "PASS",
+            "retained_outputs": 6,
+            "repeat20_released": "PASS",
+            "active_before_bytes": 87040,
+            "active_after_bytes": 87040,
+            "peak_increment_bytes": 512,
+            "retained_output_checks": [
+              {
+                "stream": 0,
+                "output": 0,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 0,
+                "output": 1,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 0,
+                "output": 2,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 1,
+                "output": 0,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 1,
+                "output": 1,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 1,
+                "output": 2,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              }
+            ],
+            "single_call_checks": {
+              "candidate_mismatches": 0,
+              "shape": true,
+              "dtype": true,
+              "npu": true,
+              "contiguous": true,
+              "independent_storage": true
+            },
+            "release_checks": [
+              {
+                "call": 1,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 2,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 3,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 4,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 5,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 6,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 7,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 8,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 9,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 10,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 11,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 12,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 13,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 14,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 15,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 16,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 17,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 18,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 19,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 20,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              }
+            ],
+            "residual_bytes": 0,
+            "output_bytes": 136,
+            "status": "PASS"
+          },
+          "baseline": {
+            "two_streams": "PASS",
+            "retained_outputs": 6,
+            "repeat20_released": "PASS",
+            "active_before_bytes": 87040,
+            "active_after_bytes": 87040,
+            "peak_increment_bytes": 507904,
+            "retained_output_checks": [
+              {
+                "stream": 0,
+                "output": 0,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 0,
+                "output": 1,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 0,
+                "output": 2,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 1,
+                "output": 0,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 1,
+                "output": 1,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 1,
+                "output": 2,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              }
+            ],
+            "single_call_checks": {
+              "candidate_mismatches": 0,
+              "shape": true,
+              "dtype": true,
+              "npu": true,
+              "contiguous": true,
+              "independent_storage": true
+            },
+            "release_checks": [
+              {
+                "call": 1,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 2,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 3,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 4,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 5,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 6,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 7,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 8,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 9,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 10,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 11,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 12,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 13,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 14,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 15,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 16,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 17,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 18,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 19,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              },
+              {
+                "call": 20,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 87040,
+                "residual_bytes": 0
+              }
+            ],
+            "residual_bytes": 0,
+            "output_bytes": 136,
+            "status": "PASS"
+          }
+        }
+      },
+      {
+        "id": "flags_perf_large",
+        "records": {
+          "candidate": {
+            "two_streams": "PASS",
+            "retained_outputs": 6,
+            "repeat20_released": "PASS",
+            "active_before_bytes": 1118208,
+            "active_after_bytes": 1118208,
+            "peak_increment_bytes": 2560,
+            "retained_output_checks": [
+              {
+                "stream": 0,
+                "output": 0,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 0,
+                "output": 1,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 0,
+                "output": 2,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 1,
+                "output": 0,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 1,
+                "output": 1,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 1,
+                "output": 2,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              }
+            ],
+            "single_call_checks": {
+              "candidate_mismatches": 0,
+              "shape": true,
+              "dtype": true,
+              "npu": true,
+              "contiguous": true,
+              "independent_storage": true
+            },
+            "release_checks": [
+              {
+                "call": 1,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 2,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 3,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 4,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 5,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 6,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 7,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 8,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 9,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 10,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 11,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 12,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 13,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 14,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 15,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 16,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 17,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 18,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 19,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 20,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              }
+            ],
+            "residual_bytes": 0,
+            "output_bytes": 2080,
+            "status": "PASS"
+          },
+          "baseline": {
+            "two_streams": "PASS",
+            "retained_outputs": 6,
+            "repeat20_released": "PASS",
+            "active_before_bytes": 1118208,
+            "active_after_bytes": 1118208,
+            "peak_increment_bytes": 7724032,
+            "retained_output_checks": [
+              {
+                "stream": 0,
+                "output": 0,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 0,
+                "output": 1,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 0,
+                "output": 2,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 1,
+                "output": 0,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 1,
+                "output": 1,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              },
+              {
+                "stream": 1,
+                "output": 2,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                }
+              }
+            ],
+            "single_call_checks": {
+              "candidate_mismatches": 0,
+              "shape": true,
+              "dtype": true,
+              "npu": true,
+              "contiguous": true,
+              "independent_storage": true
+            },
+            "release_checks": [
+              {
+                "call": 1,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 2,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 3,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 4,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 5,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 6,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 7,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 8,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 9,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 10,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 11,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 12,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 13,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 14,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 15,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 16,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 17,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 18,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 19,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              },
+              {
+                "call": 20,
+                "checks": {
+                  "candidate_mismatches": 0,
+                  "shape": true,
+                  "dtype": true,
+                  "npu": true,
+                  "contiguous": true,
+                  "independent_storage": true
+                },
+                "active_after_bytes": 1118208,
+                "residual_bytes": 0
+              }
+            ],
+            "residual_bytes": 0,
+            "output_bytes": 2080,
+            "status": "PASS"
+          }
+        }
+      }
+    ]
+  },
+  "note": "Independent engineering entry run; not merged into performance rounds."
+}

@@ -58,10 +58,19 @@ Every call allocates independent output storage and retains no per-call workspac
 The prepared launch stub receives current Tensor objects and preserves Triton launch hooks
 and allocator stream tracking. No input pointer or stream is cached.
 
+## Implementation
+
+Each program owns a 32-byte output interval, including request boundaries.
+The INT32 data difference is exact for the nonnegative input range.
+Constant division uses shifts for powers of two and a corrected INT64 reciprocal
+for other divisors, including row/tile mapping and offset alignment. Completeness
+uses an exact shift or INT64 multiplication comparison; GM addresses use INT64.
+
 ## Validation scope
 
 The driver covers all 14 task cases, 9 illegal inputs, current-value updates,
-same-shape set_ rebinding, and both performance shapes' two-stream retained outputs,
+same-shape set_ rebinding, high-offset alignment and exact high-integer division.
+Both performance shapes check two-stream retained outputs,
 peak active allocations and 20-call release checks for candidate and frozen baseline.
 Performance includes complete prepared.run, allocation and final synchronization:
 50 warmups, six alternating paired rounds, 200 calls per round, 10000 paired bootstrap
@@ -70,3 +79,13 @@ an 85 us target and benefit gates. T=255 and T=257 are report-only timing cases.
 
 The formal target is Atlas A3 / CANN 9.1.0. Current measurements are Ascend 910B3
 development validation; Atlas A3 functional, performance and memory acceptance is pending.
+
+## Submission
+
+Design: [TokenOffsetTileFlags design PR](https://gitcode.com/cann/cann-ops-competitions/merge_requests/3103).
+The [task_submission](task_submission/) directory contains the seven required
+self-test documents; [task_submission.zip](task_submission.zip) contains identical files.
+These mandated reports and logs are task-delivery artifacts. Experimental scripts,
+compiler caches and raw intermediate results remain outside the repository.
+
+Fixed validated code: `ff57b5cacc6d2ca7074a81bb094655f9c47a9feb`. Product SHA256: `63583f5340ac310ab9a1e95dd398b1659b9a113d611ad96d94459748ca5f232a`.

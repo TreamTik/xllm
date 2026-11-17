@@ -1,0 +1,320 @@
+{
+  "metadata": {
+    "operator": "TokenOffsetTileFlags",
+    "source_commit": "ff57b5cacc6d2ca7074a81bb094655f9c47a9feb",
+    "source_sha256": "63583f5340ac310ab9a1e95dd398b1659b9a113d611ad96d94459748ca5f232a",
+    "scope": "Ascend910B3 development validation; Atlas A3 acceptance pending",
+    "environment": {
+      "ASCEND_HOME_PATH": "/usr/local/Ascend/cann-9.1.0",
+      "ASCEND_TOOLKIT_HOME": "/usr/local/Ascend/cann-9.1.0",
+      "libascendcl": "/usr/local/Ascend/cann-9.1.0/aarch64-linux/lib64/libascendcl.so",
+      "CANN": "9.1.0",
+      "hardware": "Ascend910B3",
+      "visible_device": "0",
+      "cpu_threads": 1,
+      "max_jobs": 2
+    },
+    "versions": {
+      "torch": "2.7.1+cpu",
+      "torch-npu": "2.7.1.post8",
+      "triton-ascend": "3.6.0.post2",
+      "numpy": "2.5.4"
+    },
+    "full_run_exit": 0,
+    "portable_engineering_exit": 0
+  },
+  "benchmarks": [
+    {
+      "id": "flags_perf_small",
+      "baseline_mean_us": 468.16918333333336,
+      "candidate_mean_us": 47.51955833333334,
+      "saved_mean_us": 420.649625,
+      "baseline_median_us": 466.98597500000005,
+      "candidate_median_us": 47.291799999999995,
+      "saved_mean_ci95_us": [
+        415.4369333333334,
+        426.8767833333333
+      ],
+      "rounds": [
+        {
+          "baseline_us": 482.1798,
+          "candidate_us": 47.39505,
+          "round": 1,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ]
+        },
+        {
+          "candidate_us": 46.9649,
+          "baseline_us": 464.92065,
+          "round": 2,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ]
+        },
+        {
+          "baseline_us": 461.1874,
+          "candidate_us": 46.9366,
+          "round": 3,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ]
+        },
+        {
+          "candidate_us": 48.7007,
+          "baseline_us": 461.22295,
+          "round": 4,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ]
+        },
+        {
+          "baseline_us": 469.0513,
+          "candidate_us": 47.93155,
+          "round": 5,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ]
+        },
+        {
+          "candidate_us": 47.18855,
+          "baseline_us": 470.453,
+          "round": 6,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ]
+        }
+      ],
+      "warmup": 50,
+      "iterations": 200,
+      "timing": "complete prepared.run wall time and final synchronize",
+      "required": true,
+      "development_gate": "PASS"
+    },
+    {
+      "id": "flags_perf_large",
+      "baseline_mean_us": 483.18365,
+      "candidate_mean_us": 49.156375000000004,
+      "saved_mean_us": 434.027275,
+      "baseline_median_us": 481.509775,
+      "candidate_median_us": 47.965025,
+      "saved_mean_ci95_us": [
+        430.0627666666667,
+        438.253525
+      ],
+      "rounds": [
+        {
+          "baseline_us": 491.7366,
+          "candidate_us": 48.82645,
+          "round": 1,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ]
+        },
+        {
+          "candidate_us": 48.20215,
+          "baseline_us": 481.33595,
+          "round": 2,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ]
+        },
+        {
+          "baseline_us": 481.3959,
+          "candidate_us": 47.7279,
+          "round": 3,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ]
+        },
+        {
+          "candidate_us": 47.45465,
+          "baseline_us": 481.2548,
+          "round": 4,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ]
+        },
+        {
+          "baseline_us": 481.755,
+          "candidate_us": 47.2319,
+          "round": 5,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ]
+        },
+        {
+          "candidate_us": 55.4952,
+          "baseline_us": 481.62365,
+          "round": 6,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ]
+        }
+      ],
+      "warmup": 50,
+      "iterations": 200,
+      "timing": "complete prepared.run wall time and final synchronize",
+      "required": true,
+      "development_gate": "PASS"
+    },
+    {
+      "id": "flags_nonpower_255",
+      "baseline_mean_us": 464.58312500000005,
+      "candidate_mean_us": 47.655458333333335,
+      "saved_mean_us": 416.92766666666665,
+      "baseline_median_us": 462.7383,
+      "candidate_median_us": 47.549350000000004,
+      "saved_mean_ci95_us": [
+        410.91515,
+        424.20266666666663
+      ],
+      "rounds": [
+        {
+          "baseline_us": 481.6783,
+          "candidate_us": 48.67795,
+          "round": 1,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ]
+        },
+        {
+          "candidate_us": 48.46385,
+          "baseline_us": 469.0951,
+          "round": 2,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ]
+        },
+        {
+          "baseline_us": 465.4082,
+          "candidate_us": 47.82215,
+          "round": 3,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ]
+        },
+        {
+          "candidate_us": 46.8827,
+          "baseline_us": 455.54105,
+          "round": 4,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ]
+        },
+        {
+          "baseline_us": 460.0684,
+          "candidate_us": 47.27655,
+          "round": 5,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ]
+        },
+        {
+          "candidate_us": 46.80955,
+          "baseline_us": 455.7077,
+          "round": 6,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ]
+        }
+      ],
+      "warmup": 50,
+      "iterations": 200,
+      "timing": "complete prepared.run wall time and final synchronize",
+      "required": false,
+      "development_gate": "REPORT_ONLY"
+    },
+    {
+      "id": "flags_nonpower_257",
+      "baseline_mean_us": 462.4873416666667,
+      "candidate_mean_us": 47.5136,
+      "saved_mean_us": 414.9737416666666,
+      "baseline_median_us": 461.5229,
+      "candidate_median_us": 47.473150000000004,
+      "saved_mean_ci95_us": [
+        412.9281833333334,
+        417.34233333333333
+      ],
+      "rounds": [
+        {
+          "baseline_us": 460.626,
+          "candidate_us": 47.46095,
+          "round": 1,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ]
+        },
+        {
+          "candidate_us": 47.4617,
+          "baseline_us": 459.00805,
+          "round": 2,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ]
+        },
+        {
+          "baseline_us": 468.3498,
+          "candidate_us": 47.97515,
+          "round": 3,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ]
+        },
+        {
+          "candidate_us": 47.62945,
+          "baseline_us": 463.8944,
+          "round": 4,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ]
+        },
+        {
+          "baseline_us": 460.98465,
+          "candidate_us": 47.4846,
+          "round": 5,
+          "order": [
+            "baseline_us",
+            "candidate_us"
+          ]
+        },
+        {
+          "candidate_us": 47.06975,
+          "baseline_us": 462.06115,
+          "round": 6,
+          "order": [
+            "candidate_us",
+            "baseline_us"
+          ]
+        }
+      ],
+      "warmup": 50,
+      "iterations": 200,
+      "timing": "complete prepared.run wall time and final synchronize",
+      "required": false,
+      "development_gate": "REPORT_ONLY"
+    }
+  ]
+}

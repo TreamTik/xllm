@@ -1,0 +1,642 @@
+{
+  "metadata": {
+    "operator": "TokenOffsetTileFlags",
+    "source_commit": "ff57b5cacc6d2ca7074a81bb094655f9c47a9feb",
+    "source_sha256": "63583f5340ac310ab9a1e95dd398b1659b9a113d611ad96d94459748ca5f232a",
+    "scope": "Ascend910B3 development validation; Atlas A3 acceptance pending",
+    "environment": {
+      "ASCEND_HOME_PATH": "/usr/local/Ascend/cann-9.1.0",
+      "ASCEND_TOOLKIT_HOME": "/usr/local/Ascend/cann-9.1.0",
+      "libascendcl": "/usr/local/Ascend/cann-9.1.0/aarch64-linux/lib64/libascendcl.so",
+      "CANN": "9.1.0",
+      "hardware": "Ascend910B3",
+      "visible_device": "0",
+      "cpu_threads": 1,
+      "max_jobs": 2
+    },
+    "versions": {
+      "torch": "2.7.1+cpu",
+      "torch-npu": "2.7.1.post8",
+      "triton-ascend": "3.6.0.post2",
+      "numpy": "2.5.4"
+    },
+    "full_run_exit": 0,
+    "portable_engineering_exit": 0
+  },
+  "cases": [
+    {
+      "id": "flags_literal",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true,
+        "baseline_mismatches": 0,
+        "inputs_unchanged": true
+      },
+      "input_shapes": [
+        [
+          15
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ]
+      ],
+      "shape": [
+        8
+      ],
+      "attributes": {
+        "tile_size": 4,
+        "max_tiles_per_seq": 2
+      }
+    },
+    {
+      "id": "flags_empty_requests",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true,
+        "baseline_mismatches": 0,
+        "inputs_unchanged": true
+      },
+      "input_shapes": [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          0
+        ],
+        [
+          1
+        ]
+      ],
+      "shape": [
+        0
+      ],
+      "attributes": {
+        "tile_size": 4,
+        "max_tiles_per_seq": 2
+      }
+    },
+    {
+      "id": "flags_empty_offsets",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true,
+        "baseline_mismatches": 0,
+        "inputs_unchanged": true
+      },
+      "input_shapes": [
+        [
+          0
+        ],
+        [
+          3
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "shape": [
+        4
+      ],
+      "attributes": {
+        "tile_size": 4,
+        "max_tiles_per_seq": 2
+      }
+    },
+    {
+      "id": "flags_segment_padding",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true,
+        "baseline_mismatches": 0,
+        "inputs_unchanged": true
+      },
+      "input_shapes": [
+        [
+          10
+        ],
+        [
+          3
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "shape": [
+        4
+      ],
+      "attributes": {
+        "tile_size": 4,
+        "max_tiles_per_seq": 2
+      }
+    },
+    {
+      "id": "flags_tile1",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true,
+        "baseline_mismatches": 0,
+        "inputs_unchanged": true
+      },
+      "input_shapes": [
+        [
+          78
+        ],
+        [
+          6
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ]
+      ],
+      "shape": [
+        85
+      ],
+      "attributes": {
+        "tile_size": 1,
+        "max_tiles_per_seq": 17
+      }
+    },
+    {
+      "id": "flags_nonpower3",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true,
+        "baseline_mismatches": 0,
+        "inputs_unchanged": true
+      },
+      "input_shapes": [
+        [
+          54
+        ],
+        [
+          6
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ]
+      ],
+      "shape": [
+        25
+      ],
+      "attributes": {
+        "tile_size": 3,
+        "max_tiles_per_seq": 5
+      }
+    },
+    {
+      "id": "flags_tail129",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true,
+        "baseline_mismatches": 0,
+        "inputs_unchanged": true
+      },
+      "input_shapes": [
+        [
+          1270
+        ],
+        [
+          6
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ]
+      ],
+      "shape": [
+        15
+      ],
+      "attributes": {
+        "tile_size": 128,
+        "max_tiles_per_seq": 3
+      }
+    },
+    {
+      "id": "flags_max4096",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true,
+        "baseline_mismatches": 0,
+        "inputs_unchanged": true
+      },
+      "input_shapes": [
+        [
+          8191
+        ],
+        [
+          3
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "shape": [
+        4
+      ],
+      "attributes": {
+        "tile_size": 4096,
+        "max_tiles_per_seq": 2
+      }
+    },
+    {
+      "id": "flags_perf_small",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true,
+        "baseline_mismatches": 0,
+        "inputs_unchanged": true
+      },
+      "input_shapes": [
+        [
+          16356
+        ],
+        [
+          9
+        ],
+        [
+          8
+        ],
+        [
+          9
+        ]
+      ],
+      "shape": [
+        136
+      ],
+      "attributes": {
+        "tile_size": 128,
+        "max_tiles_per_seq": 17
+      }
+    },
+    {
+      "id": "flags_perf_large",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true,
+        "baseline_mismatches": 0,
+        "inputs_unchanged": true
+      },
+      "input_shapes": [
+        [
+          261648
+        ],
+        [
+          33
+        ],
+        [
+          32
+        ],
+        [
+          33
+        ]
+      ],
+      "shape": [
+        2080
+      ],
+      "attributes": {
+        "tile_size": 128,
+        "max_tiles_per_seq": 65
+      }
+    },
+    {
+      "id": "flags_interior_last_and_logical_tail",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true,
+        "baseline_mismatches": 0,
+        "inputs_unchanged": true
+      },
+      "input_shapes": [
+        [
+          39
+        ],
+        [
+          3
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "shape": [
+        8
+      ],
+      "attributes": {
+        "tile_size": 5,
+        "max_tiles_per_seq": 4
+      }
+    },
+    {
+      "id": "flags_near_int32_limit",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true,
+        "baseline_mismatches": 0,
+        "inputs_unchanged": true
+      },
+      "input_shapes": [
+        [
+          9
+        ],
+        [
+          2
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "shape": [
+        3
+      ],
+      "attributes": {
+        "tile_size": 3,
+        "max_tiles_per_seq": 3
+      }
+    },
+    {
+      "id": "flags_nonpower_255",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true,
+        "baseline_mismatches": 0,
+        "inputs_unchanged": true
+      },
+      "input_shapes": [
+        [
+          41274
+        ],
+        [
+          10
+        ],
+        [
+          9
+        ],
+        [
+          10
+        ]
+      ],
+      "shape": [
+        171
+      ],
+      "attributes": {
+        "tile_size": 255,
+        "max_tiles_per_seq": 19
+      }
+    },
+    {
+      "id": "flags_nonpower_257",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true,
+        "baseline_mismatches": 0,
+        "inputs_unchanged": true
+      },
+      "input_shapes": [
+        [
+          41598
+        ],
+        [
+          10
+        ],
+        [
+          9
+        ],
+        [
+          10
+        ]
+      ],
+      "shape": [
+        171
+      ],
+      "attributes": {
+        "tile_size": 257,
+        "max_tiles_per_seq": 19
+      }
+    }
+  ],
+  "negative": [
+    {
+      "id": "input_count",
+      "status": "PASS",
+      "exception": "ValueError"
+    },
+    {
+      "id": "unknown_attribute",
+      "status": "PASS",
+      "exception": "ValueError"
+    },
+    {
+      "id": "cpu_input",
+      "status": "PASS",
+      "exception": "ValueError"
+    },
+    {
+      "id": "dtype",
+      "status": "PASS",
+      "exception": "TypeError"
+    },
+    {
+      "id": "noncontiguous",
+      "status": "PASS",
+      "exception": "ValueError"
+    },
+    {
+      "id": "zero_tile",
+      "status": "PASS",
+      "exception": "ValueError"
+    },
+    {
+      "id": "oversize_tile",
+      "status": "PASS",
+      "exception": "ValueError"
+    },
+    {
+      "id": "non_dense_output_offsets",
+      "status": "PASS",
+      "exception": "ValueError"
+    },
+    {
+      "id": "length_exceeds_segment",
+      "status": "PASS",
+      "exception": "ValueError"
+    }
+  ],
+  "mutable": [
+    {
+      "id": "mutable_0",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true
+      }
+    },
+    {
+      "id": "mutable_1",
+      "status": "PASS",
+      "checks": {
+        "candidate_mismatches": 0,
+        "shape": true,
+        "dtype": true,
+        "npu": true,
+        "contiguous": true,
+        "independent_storage": true
+      }
+    }
+  ],
+  "pytest": {
+    "tests": 35,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "static_review": {
+    "status": "PASS",
+    "scope": "Triton/Python task contract review; AscendC/GEIR review workflow not applicable",
+    "source_sha256": "63583f5340ac310ab9a1e95dd398b1659b9a113d611ad96d94459748ca5f232a",
+    "checks": {
+      "boundary_validation": "PASS",
+      "int32_difference_range": "PASS: both operands [0,INT32_MAX], difference fits signed INT32",
+      "address_width": "INT64",
+      "full_tile_guard": "power-of-two shift; non-power-of-two INT64 multiply comparison",
+      "output_ownership": "32-byte aligned interval per program",
+      "masked_tail": "padding lanes excluded",
+      "empty_offsets": "NPU zeros without empty pointer kernel launch",
+      "mutable_input_storage": "current Tensor objects; no cached input pointer",
+      "stream": "current stream; launch hooks and allocator tracking retained",
+      "temporary_lifetime": "fresh output; no GM workspace",
+      "independent_integer_oracle": "14 task cases exact match",
+      "style": "ruff check, ruff format --check and repository-configured codespell passed",
+      "exact_division": "shift or INT64 reciprocal multiply + one correction; 14 high-integer regression groups PASS",
+      "high_offset_alignment": "11 tile sizes near INT32_MAX PASS",
+      "formal_regression": "35 tests passed, zero failures/errors/skips"
+    },
+    "unverified": "Atlas A3 acceptance pending"
+  }
+}
+
+=== Actual pytest output ===
+...................................                                      [100%]
+=============================== warnings summary ===============================
+../../../packed_page_indices/work-20261117-implementation/env/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13
+  /workspace/operators/packed_page_indices/work-20261117-implementation/env/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:13: FutureWarning: triton.language.extra.cann.extension.atan2 is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.atan2 instead.
+    @_deprecated(replacement="triton.language.extra.cann.libdevice.atan2")
+
+../../../packed_page_indices/work-20261117-implementation/env/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35
+  /workspace/operators/packed_page_indices/work-20261117-implementation/env/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:35: FutureWarning: triton.language.extra.cann.extension.isfinited is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.isfinited instead.
+    @_deprecated(replacement="triton.language.extra.cann.libdevice.isfinited")
+
+../../../packed_page_indices/work-20261117-implementation/env/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49
+  /workspace/operators/packed_page_indices/work-20261117-implementation/env/lib/python3.12/site-packages/triton/language/extra/cann/extension/math_ops.py:49: FutureWarning: triton.language.extra.cann.extension.finitef is deprecated and will be removed in the next release; use triton.language.extra.cann.libdevice.finitef instead.
+    @_deprecated(replacement="triton.language.extra.cann.libdevice.finitef")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /workspace/operators/token_offset_tile_flags/work-20261117-implementation/results-exact/pytest.xml -
+35 passed, 3 warnings in 160.85s (0:02:40)
+
+=== Actual pytest XML ===
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="35" time="160.852" timestamp="2026-11-17T07:54:54.491474+00:00" hostname="eaddb6692ee6"><testcase classname="tests.python.test_token_offset_tile_flags" name="test_tile_boundaries_and_rebinding[1]" time="4.960" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_tile_boundaries_and_rebinding[3]" time="6.885" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_tile_boundaries_and_rebinding[5]" time="6.895" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_tile_boundaries_and_rebinding[127]" time="5.178" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_tile_boundaries_and_rebinding[128]" time="5.126" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_tile_boundaries_and_rebinding[129]" time="5.171" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_tile_boundaries_and_rebinding[255]" time="5.243" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_tile_boundaries_and_rebinding[257]" time="5.206" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_tile_boundaries_and_rebinding[4096]" time="4.557" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_empty_offsets_and_int32_limit" time="7.359" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_high_offset_alignment[3]" time="6.375" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_high_offset_alignment[7]" time="6.758" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_high_offset_alignment[17]" time="5.007" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_high_offset_alignment[31]" time="5.119" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_high_offset_alignment[96]" time="4.911" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_high_offset_alignment[127]" time="4.903" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_high_offset_alignment[128]" time="4.782" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_high_offset_alignment[129]" time="5.005" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_high_offset_alignment[255]" time="5.326" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_high_offset_alignment[257]" time="4.937" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_high_offset_alignment[4096]" time="4.432" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_exact_high_integer_division[1]" time="4.326" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_exact_high_integer_division[3]" time="2.741" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_exact_high_integer_division[7]" time="2.907" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_exact_high_integer_division[17]" time="3.069" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_exact_high_integer_division[31]" time="2.848" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_exact_high_integer_division[65]" time="2.736" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_exact_high_integer_division[96]" time="2.728" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_exact_high_integer_division[128]" time="2.495" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_exact_high_integer_division[255]" time="2.711" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_exact_high_integer_division[257]" time="2.718" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_exact_high_integer_division[4096]" time="2.494" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_exact_high_integer_division[1073741823]" time="2.711" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_exact_high_integer_division[1073741824]" time="2.585" /><testcase classname="tests.python.test_token_offset_tile_flags" name="test_exact_high_integer_division[2147483647]" time="2.730" /></testsuite></testsuites>
