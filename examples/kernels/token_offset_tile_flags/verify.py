@@ -175,8 +175,11 @@ def _engineering(case: dict, generator: Any, golden: Any) -> dict[str, Any]:
             with torch.npu.stream(stream):
                 retained.extend(call() for _ in range(3))
         torch.npu.synchronize()
-        for output in retained:
-            _check(output, expected, inputs)
+        retained_checks = []
+        for index, output in enumerate(retained):
+            retained_checks.append(
+                {"stream": index // 3, "output": index % 3, "checks": _check(output, expected, inputs)}
+            )
         assert len({x.untyped_storage().data_ptr() for x in retained}) == 6
         del output, retained
         for _ in range(3):
@@ -188,14 +191,20 @@ def _engineering(case: dict, generator: Any, golden: Any) -> dict[str, Any]:
         output = call()
         torch.npu.synchronize()
         peak = torch.npu.max_memory_allocated() - before
-        _check(output, expected, inputs)
+        peak_checks = _check(output, expected, inputs)
         del output
         torch.npu.synchronize()
-        for _ in range(20):
+        release_checks = []
+        for index in range(20):
             output = call()
-            _check(output, expected, inputs)
+            checks = _check(output, expected, inputs)
             del output
             torch.npu.synchronize()
+            active = torch.npu.memory_allocated()
+            assert active == before
+            release_checks.append(
+                {"call": index + 1, "checks": checks, "active_after_bytes": active, "residual_bytes": active - before}
+            )
         after = torch.npu.memory_allocated()
         assert before == after, (name, before, after)
         records[name] = {
@@ -205,6 +214,9 @@ def _engineering(case: dict, generator: Any, golden: Any) -> dict[str, Any]:
             "active_before_bytes": before,
             "active_after_bytes": after,
             "peak_increment_bytes": peak,
+            "retained_output_checks": retained_checks,
+            "single_call_checks": peak_checks,
+            "release_checks": release_checks,
             "residual_bytes": after - before,
             "output_bytes": len(expected),
             "status": "PASS",
@@ -270,7 +282,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--task-package", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
-    parser.add_argument("--mode", choices=["functional", "benchmark", "all"], default="all")
+    parser.add_argument("--mode", choices=["functional", "benchmark", "engineering", "all"], default="all")
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     sys.path.insert(0, str(args.task_package))
@@ -292,6 +304,9 @@ def main() -> None:
         result["mutable"] = _mutable(golden)
         result["engineering"] = [_engineering(c, generate_data, golden) for c in performance]
         (args.output_dir / "functional.json").write_text(json.dumps(result, indent=2) + "\n")
+    if args.mode == "engineering":
+        result["engineering"] = [_engineering(c, generate_data, golden) for c in performance]
+        (args.output_dir / "engineering-supplement.json").write_text(json.dumps(result, indent=2) + "\n")
     if args.mode in ("all", "benchmark"):
         measured = performance + [c for c in cases if c.get("generalization", {}).get("measure")]
         result["benchmarks"] = [_benchmark(c, generate_data, golden) for c in measured]

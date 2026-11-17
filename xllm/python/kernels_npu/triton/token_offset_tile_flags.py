@@ -25,6 +25,18 @@ from triton import knobs
 from triton.runtime import driver
 
 
+@triton.jit
+def _divide_nonnegative(value, DIVISOR: tl.constexpr):
+    if DIVISOR & (DIVISOR - 1) == 0:
+        return value >> (DIVISOR.bit_length() - 1)
+    else:
+        # For 0 <= value <= INT32_MAX this reciprocal is at most one high.
+        # Correct the 64-bit product before narrowing the exact quotient.
+        MAGIC: tl.constexpr = ((1 << 32) + DIVISOR - 1) // DIVISOR
+        quotient = ((value.to(tl.int64) * MAGIC) >> 32).to(tl.int32)
+        return quotient - (quotient.to(tl.int64) * DIVISOR > value).to(tl.int32)
+
+
 @triton.jit(do_not_specialize_on_alignment=["offsets", "indptr", "lengths"])
 def _flags_kernel(
     offsets,
@@ -43,18 +55,22 @@ def _flags_kernel(
     lane = tl.arange(0, LANES)
     for group in range(32 // GROUP):
         flag = base + group * GROUP + tl.arange(0, GROUP)
-        row = flag // K
-        tile = flag % K
+        row = _divide_nonnegative(flag, K)
+        tile = flag - row * K
         begin = tl.load(indptr + row, flag < TOTAL, 0).to(tl.int64)
         length = tl.load(lengths + row, flag < TOTAL, 0)
-        full = (flag < TOTAL) & (tile < length // T)
-        address = begin + tl.where(full, tile, 0) * T
+        if T & (T - 1) == 0:
+            full = (flag < TOTAL) & (tile < (length >> (T.bit_length() - 1)))
+        else:
+            full = (flag < TOTAL) & ((tile.to(tl.int64) + 1) * T <= length.to(tl.int64))
+        address = begin + tl.where(full, tile, 0).to(tl.int64) * T
         first = tl.load(offsets + address, full, 0)
         data = tl.load(offsets + address[:, None] + lane[None, :], full[:, None] & (lane[None, :] < T), 0)
         # Nonnegative INT32 offsets make data-first fit signed INT32 exactly.
         equal = (lane[None, :] >= T) | ((data - first[:, None]) == lane[None, :])
         consecutive = tl.min(equal.to(tl.int32), axis=1) != 0
-        result = full & (first % T == 0) & consecutive
+        aligned = first - _divide_nonnegative(first, T) * T == 0
+        result = full & aligned & consecutive
         tl.store(output + flag, result.to(tl.uint8), flag < TOTAL)
 
 

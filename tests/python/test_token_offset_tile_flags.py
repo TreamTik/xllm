@@ -18,8 +18,10 @@ from __future__ import annotations
 import pytest
 import torch
 import torch_npu
+import triton
+import triton.language as tl
 
-from xllm.python.kernels_npu.triton.token_offset_tile_flags import prepare
+from xllm.python.kernels_npu.triton.token_offset_tile_flags import _divide_nonnegative, prepare
 
 
 @pytest.mark.parametrize("tile", [1, 3, 5, 127, 128, 129, 255, 257, 4096])
@@ -56,3 +58,30 @@ def test_empty_offsets_and_int32_limit() -> None:
     values = [[2147483643, 2147483644, 2147483645, 2147483646, 2147483647, 0], [0, 6], [6], [0, 2]]
     inputs = [torch.tensor(x, dtype=torch.int32, device="npu:0") for x in values]
     assert prepare(inputs, {"tile_size": 3, "max_tiles_per_seq": 2}).run().cpu().tolist() == [1, 0]
+
+
+@pytest.mark.parametrize("tile", [3, 7, 17, 31, 96, 127, 128, 129, 255, 257, 4096])
+def test_high_offset_alignment(tile: int) -> None:
+    start = (2147483647 - 2 * tile) // tile * tile
+    data = list(range(start, start + tile)) + list(range(start + 1, start + tile + 1))
+    values = [data, [0, tile, 2 * tile], [tile, tile], [0, 1, 2]]
+    inputs = [torch.tensor(x, dtype=torch.int32, device="npu:0") for x in values]
+    assert prepare(inputs, {"tile_size": tile, "max_tiles_per_seq": 1}).run().cpu().tolist() == [1, 0]
+
+
+@triton.jit
+def _division_test_kernel(inputs, output, N: tl.constexpr, DIVISOR: tl.constexpr):
+    lane = tl.program_id(0) * 256 + tl.arange(0, 256)
+    value = tl.load(inputs + lane, lane < N, 0)
+    tl.store(output + lane, _divide_nonnegative(value, DIVISOR), lane < N)
+
+
+@pytest.mark.parametrize("divisor", [1, 3, 7, 17, 31, 65, 96, 128, 255, 257, 4096, 1073741823, 1073741824, 2147483647])
+def test_exact_high_integer_division(divisor: int) -> None:
+    generator = torch.Generator().manual_seed(19)
+    values = torch.randint(0, 2147483647, (2048,), generator=generator, dtype=torch.int32)
+    values[:6] = torch.tensor([0, divisor - 1, divisor, 2147483645, 2147483646, 2147483647], dtype=torch.int32)
+    inputs = values.to("npu:0")
+    output = torch.empty_like(inputs)
+    _division_test_kernel[(8,)](inputs, output, values.numel(), divisor)
+    assert torch.equal(output.cpu(), values // divisor)
